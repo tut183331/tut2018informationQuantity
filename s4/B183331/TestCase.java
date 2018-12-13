@@ -34,6 +34,7 @@ public class TestCase {
 	try {
 	    FrequencerInterface  myObject;
 	    int freq;
+            int freq2;
 	    System.out.println("checking s4.B183331.Frequencer");
 	    myObject = new s4.B183331.Frequencer();
 	    myObject.setSpace("Hi Ho Hi Ho".getBytes());
@@ -41,6 +42,29 @@ public class TestCase {
 	    freq = myObject.frequency();
 	    System.out.print("\"H\" in \"Hi Ho Hi Ho\" appears "+freq+" times. ");
 	    if(4 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+
+	    myObject.setSpace("".getBytes());
+            freq = myObject.frequency();
+            System.out.print("\"H\" in \"\" appears "+freq+" times.");
+            if(0 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+
+            myObject.setSpace("Hi Ho Hi Ho".getBytes());
+            myObject.setTarget("".getBytes());
+            freq = myObject.frequency();
+            System.out.print("Target is not set then freq = "+freq+".");
+            if(-1 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+
+            myObject.setSpace("Hi Ho Hi Ho".getBytes());
+	    myObject.setTarget("Hiiiiii".getBytes());
+	    freq = myObject.subByteFrequency(0,1);
+            System.out.print("\"Hi\" in \"Hi Ho Hi Ho\" appears "+freq+" times. ");
+	    if(2 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+
+	    freq = myObject.subByteFrequency(-1,1);
+            freq2 = myObject.subByteFrequency(0,"Hiiiiii".length()+5);
+            System.out.println("subByteFrequency(start,end)");
+            System.out.print("When \"start\" is less than zero, freq ="+freq+".");
+            System.out.print("When \"end\" is more than length of \"Target\", freq ="+freq2+".");
 	}
 	catch(Exception e) {
 	    System.out.println("Exception occurred: STOP");
@@ -64,6 +88,9 @@ public class TestCase {
 	    myObject.setTarget("00".getBytes());
 	    value = myObject.estimation();
 	    System.out.println(">00 "+value);
+            myObject.setTarget("".getBytes());
+	    value = myObject.estimation();
+	    System.out.println(">When target's length is zero  "+value);
 	}
 	catch(Exception e) {
 	    System.out.println("Exception occurred: STOP");
