@@ -100,17 +100,16 @@ public class TestCase {
         try{
             FrequencerInterface  myObject;
 	    int freq;
-            System.out.print("   \"Hoo\" in \"Hi Ho Hi Ho\" appears ");
+            System.out.print("   \"aa\" in \"aaaaa\" appears ");
 	    myObject = new s4.B183331.Frequencer();
-            myObject.setSpace("Hi Ho Hi Ho".getBytes());
-	    myObject.setTarget("Hoo".getBytes());
+            myObject.setSpace("aaaaa".getBytes());
+	    myObject.setTarget("aa".getBytes());
 	    freq = myObject.frequency();
 	    System.out.println(freq+" times. ");
         }
         catch(Exception e) {
 	    System.out.println("Exception occurred: STOP");
 	}
-
 
          try{
             FrequencerInterface  myObject;
@@ -130,12 +129,12 @@ public class TestCase {
 	    if(0 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
             
 	    freq = myObject.subByteFrequency(-1,2);
-            System.out.println("   When \"start\" is less than zero, frequency ="+freq+".");
+            System.out.println("   \"subByteFrequency(-1,2)\" When \"start\" is less than zero, frequency ="+freq+".");
             freq = myObject.subByteFrequency(0,"Hiiiiii".length()+5);
-            System.out.println("   When \"end\" is more than length of \"Target\", frequency ="+freq+".");
+            System.out.println("   \"subByteFrequency(0,12)\" When \"end\" is more than length of \"Target\", frequency ="+freq+".");
             
-            freq = myObject.subByteFrequency(2,0);
-            System.out.println("   When start's value is more than end's value, frequency ="+freq+".");
+            freq = myObject.subByteFrequency(3,2);
+            System.out.println("   \"subByteFrequency(3,2)\" When start's value is more than end's value, frequency ="+freq+".");
             
             myObject.setSpace("".getBytes());
             freq = myObject.subByteFrequency(0,2);
@@ -175,8 +174,6 @@ public class TestCase {
         catch(Exception e) {
 	    System.out.println("Exception occurred: STOP");
 	}
-
-
         
 	try {
 	    InformationEstimatorInterface myObject;
