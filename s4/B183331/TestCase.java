@@ -44,6 +44,11 @@ public class TestCase {
 	    freq = myObject.frequency();
 	    System.out.print("   \"H\" in \"Hi Ho Hi Ho\" appears "+freq+" times. ");
 	    if(4 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
+
+            myObject.setTarget("Hi".getBytes());
+	    freq = myObject.frequency();
+	    System.out.print("   \"Hi\" in \"Hi Ho Hi Ho\" appears "+freq+" times. ");
+	    if(2 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
            
             myObject.setTarget("Ha".getBytes());
 	    freq = myObject.frequency();
@@ -60,20 +65,8 @@ public class TestCase {
             freq = myObject.frequency();
             System.out.print("   Target's length is zero then frequency = "+freq+". ");
             if(-1 == freq) { System.out.println("OK"); } else {System.out.println("WRONG"); }
-            }
-        catch(Exception e) {
-	    System.out.println("Exception occurred: STOP");
-	}
 
-        try{
-            FrequencerInterface  myObject;
-	    int freq;
-            System.out.print("   Target is not set then ");
-	    myObject = new s4.B183331.Frequencer();
-	    myObject.setSpace("Hi Ho Hi Ho".getBytes());
-	    freq = myObject.frequency();
-	    System.out.println("frequency = "+freq+".");
-        }
+            }
         catch(Exception e) {
 	    System.out.println("Exception occurred: STOP");
 	}
@@ -84,6 +77,19 @@ public class TestCase {
             System.out.print("   Space is not set then ");
 	    myObject = new s4.B183331.Frequencer();
 	    myObject.setTarget("H".getBytes());
+	    freq = myObject.frequency();
+	    System.out.println("frequency = "+freq+".");
+        }
+        catch(Exception e) {
+	    System.out.println("Exception occurred: STOP");
+	}
+
+        try{
+            FrequencerInterface  myObject;
+	    int freq;
+            System.out.print("   Target is not set then ");
+	    myObject = new s4.B183331.Frequencer();
+	    myObject.setSpace("Hi Ho Hi Ho".getBytes());
 	    freq = myObject.frequency();
 	    System.out.println("frequency = "+freq+".");
         }
@@ -111,6 +117,7 @@ public class TestCase {
 	    int freq;
             System.out.print("\n");
             System.out.println("++checking subByteFrequency(start,end)");
+            System.out.println("(Set target is \"Hiiiiii\".)");
 	    myObject = new s4.B183331.Frequencer();
 	    myObject.setSpace("Hi Ho Hi Ho".getBytes());
 	    myObject.setTarget("Hiiiiii".getBytes());
@@ -251,6 +258,20 @@ public class TestCase {
         try{
             InformationEstimatorInterface  myObject;
 	    double value;
+            System.out.print("   >02122000212200122012220002110120 ");
+	    myObject = new s4.B183331.InformationEstimator();
+            myObject.setSpace("3210321001230123".getBytes());
+            myObject.setTarget("02122000212200122012220002110120".getBytes());
+	    value = myObject.estimation();
+            System.out.println(value);
+        }
+        catch(Exception e) {
+	    System.out.println("Exception occurred: STOP");
+	}
+
+        try{
+            InformationEstimatorInterface  myObject;
+	    double value;
             System.out.print("   >1233 ");
 	    myObject = new s4.B183331.InformationEstimator();
             myObject.setSpace("3210321001230123".getBytes());
@@ -269,20 +290,6 @@ public class TestCase {
 	    myObject = new s4.B183331.InformationEstimator();
             myObject.setSpace("3210321001230123".getBytes());
             myObject.setTarget("30".getBytes());
-	    value = myObject.estimation();
-            System.out.println(value);
-        }
-        catch(Exception e) {
-	    System.out.println("Exception occurred: STOP");
-	}
-
-        try{
-            InformationEstimatorInterface  myObject;
-	    double value;
-            System.out.print("   >02122000212200122012220002110120 ");
-	    myObject = new s4.B183331.InformationEstimator();
-            myObject.setSpace("3210321001230123".getBytes());
-            myObject.setTarget("02122000212200122012220002110120".getBytes());
 	    value = myObject.estimation();
             System.out.println(value);
         }
