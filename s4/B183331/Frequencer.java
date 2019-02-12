@@ -72,35 +72,6 @@ public class Frequencer implements FrequencerInterface{
   return 0;
   }
 
-/*
-  private int partition(int left, int right){
-    int piv = suffixArray[(left+right)/2];
-    while(left < right){
-      while(suffixCompare(suffixArray[left],piv) == -1){ left++; }
-      while(suffixCompare(suffixArray[right],piv) ==  1){ right--; }
-      if(left <= right){
-        int tmp = suffixArray[left];
-        suffixArray[left] = suffixArray[right];
-        suffixArray[right] = tmp;
-        left++; right--;
-      }
-    }
-    return left;
-  }
-
-    private void quickSort(int left, int right){
-      if(suffixArray.length < 2){
-        return;
-      }
-      int index = partition(left,right);
-      if(left < index - 1){
-        quickSort(left, index-1);
-      }
-      if(index < right){
-        quickSort(index,right);
-      }
-    }
-*/
     private void mergeSort(int low, int high){
       if(low < high){
         int middle = (low + high) / 2;
@@ -150,16 +121,6 @@ public class Frequencer implements FrequencerInterface{
 	//
 	// ****  Please write code here... ***
 	//
-  /*for(int j = 0; j < suffixArray.length - 1; j++){
-    for(int k = suffixArray.length - 1; k > j; k--){
-      if(suffixCompare(suffixArray[k-1],suffixArray[k]) == 1){
-        int tmp = suffixArray[k];
-        suffixArray[k] = suffixArray[k-1];
-        suffixArray[k-1] = tmp;
-      }
-    }
-  }*/
-  //quickSort(0,suffixArray.length-1);
   mergeSort(0,suffixArray.length-1);
     }
 
@@ -209,10 +170,6 @@ public class Frequencer implements FrequencerInterface{
 	//
 	// ****  Please write code here... ***
 	//
-  /*for(int i=0;i<suffixArray.length;i++){
-    if(targetCompare(i,start,end)==0)
-      return i;
-  }*/
 
   int low = 0;
   int high = suffixArray.length;
@@ -239,7 +196,6 @@ public class Frequencer implements FrequencerInterface{
     }
   }
 
-	//return suffixArray.length; // This line should be modified.
  return st;
   }
 
@@ -252,11 +208,6 @@ public class Frequencer implements FrequencerInterface{
 	// ****  Please write code here... ***
 	//
 
-  /*for(int i=subByteStartIndex(start,end);i<suffixArray.length;i++){
-    if(targetCompare(i,start,end)==1)
-      return i;
-  }
-	return suffixArray.length; // This line should be modified.*/
   int low = subByteStartIndex(start,end);
   int high = suffixArray.length;
   int en = suffixArray.length;
