@@ -187,6 +187,8 @@ public class Frequencer implements FrequencerInterface{
 
   int k = suffixArray[i]; // beginning letter's index
 
+  if(myTarget.length == 0) return 1;
+
   for(;j<end;j++,k++){
     if(mySpace[k] > myTarget[j]){
       return 1;
@@ -215,6 +217,10 @@ public class Frequencer implements FrequencerInterface{
   int low = 0;
   int high = suffixArray.length;
   int st = suffixArray.length;
+
+  if(myTarget.length == 0){
+    return 0;
+  }
 
   while(low < high){
     int mid = (low + high) / 2;
@@ -254,6 +260,10 @@ public class Frequencer implements FrequencerInterface{
   int low = subByteStartIndex(start,end);
   int high = suffixArray.length;
   int en = suffixArray.length;
+
+  if(myTarget.length == 0){
+    return -1;
+  }
 
   while(low < high){
     int mid = (low + high) / 2;

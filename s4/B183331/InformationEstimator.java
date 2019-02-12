@@ -67,7 +67,12 @@ public class InformationEstimator implements InformationEstimatorInterface{
   }
 
   if(myTarget.length == 1){
-    return parts_Iq[1];
+    if(parts_Iq[1] < Double.MAX_VALUE){
+      return parts_Iq[1];
+    }
+    else{
+      return Double.MAX_VALUE;
+    }
   }
 
   else if(myTarget.length >= 2){
@@ -78,6 +83,10 @@ public class InformationEstimator implements InformationEstimatorInterface{
         myFrequencer.setTarget(subBytes(myTarget, k-1, j));
 
         value1 = parts_Iq[k-1] + iq(myFrequencer.frequency());
+
+        if(value1 == Double.MAX_VALUE){
+          return Double.MAX_VALUE;
+        }
 
         if(value1 < value){
           parts_Iq[j] = value1;
@@ -143,6 +152,5 @@ public class InformationEstimator implements InformationEstimatorInterface{
 	myObject.setTarget("00".getBytes());
 	value = myObject.estimation();
 	System.out.println(">00 "+value);
-
     }
 }
